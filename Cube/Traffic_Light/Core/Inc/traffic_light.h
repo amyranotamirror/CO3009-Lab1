@@ -16,13 +16,15 @@
 #define YELLOW_LIGHT 1
 #define GREEN_LIGHT 2
 
-#define GREEN_TIME 3
-#define YELLOW_TIME 2
+#define GREEN_TIME 2
+#define YELLOW_TIME 1
 #define RED_TIME (GREEN_TIME + YELLOW_TIME)
 
 /* Functions -----------------------------------------------------------------*/
 void init_traffic();
 void turn_light_off(int color);
 void turn_light_on(int color);
+void turn_all_light_off();
+void run_traffic_light(int color);
 
 #endif /* INC_TRAFFIC_LIGHT_H_ */

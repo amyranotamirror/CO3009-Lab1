@@ -86,6 +86,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   init_traffic();
+  int traffic_color = RED_LIGHT;
+  int traffic_timer = RED_TIME - 1;
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -94,6 +96,32 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  run_traffic_light(traffic_color);
+	  switch(traffic_color){
+	  case RED_LIGHT:
+		  if(traffic_timer <= 0){
+			  traffic_color = GREEN_LIGHT;
+			  traffic_timer = GREEN_TIME;
+		  }
+		  break;
+	  case GREEN_LIGHT:
+		  if(traffic_timer <= 0){
+			  traffic_color = YELLOW_LIGHT;
+			  traffic_timer = YELLOW_TIME;
+		  }
+		  break;
+	  case YELLOW_LIGHT:
+		  if(traffic_timer <= 0){
+			  traffic_color = RED_LIGHT;
+			  traffic_timer = RED_TIME;
+		  }
+		  break;
+	  default:
+		  turn_all_light_off();
+		  break;
+	  }
+	  traffic_timer--;
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

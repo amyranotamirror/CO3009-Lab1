@@ -1,0 +1,35 @@
+/*
+ * traffic_light.c
+ *
+ *  Created on: Sep 29, 2023
+ *      Author: Amyra Nguyen
+ */
+
+#include "traffic_light.h"
+void init_traffic(){
+	light_color[GREEN_LIGHT] = (GPIO_config){LED_GREEN_GPIO_Port, LED_GREEN_Pin};
+	light_color[YELLOW_LIGHT] = (GPIO_config){LED_YELLOW_GPIO_Port, LED_YELLOW_Pin};
+	light_color[RED_LIGHT] = (GPIO_config){LED_RED_GPIO_Port, LED_RED_Pin};
+	turn_all_light_off();
+}
+void turn_light_off(int color){
+	set_GPIO_on(&light_color[color]);
+}
+void turn_light_on(int color){
+	set_GPIO_off(&light_color[color]);
+}
+void turn_all_light_off(){
+	for(int color = 0; color < NUM_COLOR; color++){
+		turn_light_off(color);
+	}
+}
+void run_traffic_light(int color){
+	turn_light_on(color);
+	for(int i = 0; i < NUM_COLOR; i++){
+		if(i == color){
+			turn_light_on(i);
+			continue;
+		}
+		turn_light_on(i);
+	}
+}
