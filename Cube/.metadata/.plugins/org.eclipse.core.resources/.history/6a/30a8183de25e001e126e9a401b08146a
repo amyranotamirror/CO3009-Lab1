@@ -1,0 +1,29 @@
+/*
+ * traffic_light.h
+ *
+ *  Created on: Sep 29, 2023
+ *      Author: Amyra Nguyen
+ */
+
+#ifndef INC_TRAFFIC_LIGHT_H_
+#define INC_TRAFFIC_LIGHT_H_
+/* Includes ------------------------------------------------------------------*/
+#include "global.h"
+#include "main.h"
+
+/* Macros & Global variables -------------------------------------------------*/
+#define RED_LIGHT 0
+#define YELLOW_LIGHT 1
+#define GREEN_LIGHT 2
+
+#define GREEN_TIME 3
+#define YELLOW_TIME 2
+#define RED_TIME (GREEN_TIME + YELLOW_TIME)
+
+/* Functions -----------------------------------------------------------------*/
+void init_traffic();
+
+void turn_light_off(int side, int color);
+void turn_light_on(int side, int color);
+
+#endif /* INC_TRAFFIC_LIGHT_H_ */
