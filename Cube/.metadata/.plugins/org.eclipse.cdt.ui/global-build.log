@@ -1,0 +1,20 @@
+18:49:58 **** Incremental Build of configuration Debug for project LED_Blinky ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blinky.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\HCMUT\KNOWLEDGE\Github\HCMUT\Team\CO3007-2111203-lab1\CO3007-2111203-lab1\Cube\LED_Blinky\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blinky.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blinky.elf
+ 
+arm-none-eabi-size   LED_Blinky.elf 
+arm-none-eabi-objdump -h -S  LED_Blinky.elf  > "LED_Blinky.list"
+arm-none-eabi-objcopy  -O ihex  LED_Blinky.elf  "LED_Blinky.hex"
+   text	   data	    bss	    dec	    hex	filename
+   4604	     20	   1572	   6196	   1834	LED_Blinky.elf
+arm-none-eabi-objcopy  -O binary  LED_Blinky.elf  "LED_Blinky.bin"
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blinky.list
+Finished building: LED_Blinky.hex
+Finished building: LED_Blinky.bin
+ 
+ 
+ 
