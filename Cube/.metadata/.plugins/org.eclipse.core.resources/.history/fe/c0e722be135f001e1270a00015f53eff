@@ -16,8 +16,8 @@
 #define YELLOW_LIGHT 1
 #define GREEN_LIGHT 2
 
-#define GREEN_TIME 3
-#define YELLOW_TIME 2
+#define GREEN_TIME 2
+#define YELLOW_TIME 1
 #define RED_TIME (GREEN_TIME + YELLOW_TIME)
 
 /* Functions -----------------------------------------------------------------*/
