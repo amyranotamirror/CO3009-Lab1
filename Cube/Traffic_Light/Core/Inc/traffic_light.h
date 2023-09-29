@@ -20,11 +20,16 @@
 #define YELLOW_TIME 2
 #define RED_TIME (GREEN_TIME + YELLOW_TIME)
 
+#define SIDE_A 0
+#define SIDE_B 1
+
+
 /* Functions -----------------------------------------------------------------*/
-void init_traffic();
-void turn_light_off(int color);
-void turn_light_on(int color);
+void init_traffic_light();
+void turn_light_off(int side, int color);
+void turn_light_on(int side, int color);
 void turn_all_light_off();
-void run_traffic_light(int color);
+void run_traffic_light(int side, int color);
+void change_traffic_light(int side, int color);
 
 #endif /* INC_TRAFFIC_LIGHT_H_ */

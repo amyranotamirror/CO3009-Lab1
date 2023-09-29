@@ -6,29 +6,50 @@
  */
 
 #include "traffic_light.h"
-void init_traffic(){
-	light_color[GREEN_LIGHT] = (GPIO_config){LED_GREEN_GPIO_Port, LED_GREEN_Pin};
-	light_color[YELLOW_LIGHT] = (GPIO_config){LED_YELLOW_GPIO_Port, LED_YELLOW_Pin};
-	light_color[RED_LIGHT] = (GPIO_config){LED_RED_GPIO_Port, LED_RED_Pin};
+void init_traffic_light(){
+	light_color[SIDE_A][GREEN_LIGHT] = (GPIO_config){GREEN_A_GPIO_Port, GREEN_A_Pin};
+	light_color[SIDE_A][YELLOW_LIGHT] = (GPIO_config){YELLOW_A_GPIO_Port, YELLOW_A_Pin};
+	light_color[SIDE_A][RED_LIGHT] = (GPIO_config){RED_A_GPIO_Port, RED_A_Pin};
+
+	light_color[SIDE_B][GREEN_LIGHT] = (GPIO_config){GREEN_B_GPIO_Port, GREEN_B_Pin};
+	light_color[SIDE_B][YELLOW_LIGHT] = (GPIO_config){YELLOW_B_GPIO_Port, YELLOW_B_Pin};
+	light_color[SIDE_B][RED_LIGHT] = (GPIO_config){RED_B_GPIO_Port, RED_B_Pin};
 	turn_all_light_off();
+
+	traffic_color[SIDE_A] = RED_LIGHT;
+	traffic_timer[SIDE_A] = RED_TIME - 1;
+
+	traffic_color[SIDE_B] = GREEN_LIGHT;
+	traffic_timer[SIDE_B] = GREEN_TIME - 1;
 }
-void turn_light_off(int color){
-	set_GPIO_on(&light_color[color]);
+void turn_light_off(int side, int color){
+	set_GPIO_on(&light_color[side][color]);
 }
-void turn_light_on(int color){
-	set_GPIO_off(&light_color[color]);
+void turn_light_on(int side, int color){
+	set_GPIO_off(&light_color[side][color]);
 }
 void turn_all_light_off(){
-	for(int color = 0; color < NUM_COLOR; color++){
-		turn_light_off(color);
+	for(int side = 0; side < NUM_SIDE; side++){
+		for(int color = 0; color < NUM_COLOR; color++){
+			turn_light_off(side, color);
+		}
 	}
 }
-void run_traffic_light(int color){
+void run_traffic_light(int side, int color){
 	for(int i = 0; i < NUM_COLOR; i++){
 		if(i == color){
-			turn_light_on(i);
+			turn_light_on(side, i);
 			continue;
 		}
-		turn_light_off(i);
+		turn_light_off(side, i);
 	}
+}
+void change_traffic_light(int side, int color){
+	traffic_color[side] = color;
+	if(color == GREEN_LIGHT)
+		traffic_timer[side] = GREEN_TIME - 1;
+	if(color == YELLOW_LIGHT)
+		traffic_timer[side] = YELLOW_LIGHT - 1;
+	if(color == RED_LIGHT)
+		traffic_timer[side] = RED_LIGHT - 1;
 }

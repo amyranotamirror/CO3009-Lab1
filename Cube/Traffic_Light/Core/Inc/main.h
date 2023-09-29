@@ -30,7 +30,7 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
 #include "traffic_light.h"
-#include "global.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -59,12 +59,18 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define LED_RED_Pin GPIO_PIN_5
-#define LED_RED_GPIO_Port GPIOA
-#define LED_YELLOW_Pin GPIO_PIN_6
-#define LED_YELLOW_GPIO_Port GPIOA
-#define LED_GREEN_Pin GPIO_PIN_7
-#define LED_GREEN_GPIO_Port GPIOA
+#define RED_A_Pin GPIO_PIN_1
+#define RED_A_GPIO_Port GPIOA
+#define YELLOW_A_Pin GPIO_PIN_2
+#define YELLOW_A_GPIO_Port GPIOA
+#define GREEN_A_Pin GPIO_PIN_3
+#define GREEN_A_GPIO_Port GPIOA
+#define RED_B_Pin GPIO_PIN_4
+#define RED_B_GPIO_Port GPIOA
+#define YELLOW_B_Pin GPIO_PIN_5
+#define YELLOW_B_GPIO_Port GPIOA
+#define GREEN_B_Pin GPIO_PIN_6
+#define GREEN_B_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

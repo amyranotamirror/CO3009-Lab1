@@ -12,13 +12,16 @@
 
 /* Macros & Global variables -------------------------------------------------*/
 #define NUM_COLOR 3
+#define NUM_SIDE 2
 
 /* GPIO setup ----------------------------------------------------------------*/
 typedef struct{
 	GPIO_TypeDef* port;
 	uint16_t pin;
 } GPIO_config;
-GPIO_config light_color[NUM_COLOR];
+GPIO_config light_color[NUM_SIDE][NUM_COLOR];
+int traffic_color[NUM_SIDE];
+int traffic_timer[NUM_SIDE];
 void set_GPIO_off(GPIO_config *destination);
 void set_GPIO_on(GPIO_config *destination);
 

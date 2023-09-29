@@ -85,9 +85,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  init_traffic();
-  int traffic_color = RED_LIGHT;
-  int traffic_timer = RED_TIME - 1;
+  init_traffic_light();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -96,31 +94,43 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  run_traffic_light(traffic_color);
-	  switch(traffic_color){
+	  run_traffic_light(SIDE_A, traffic_color[SIDE_A]);
+	  run_traffic_light(SIDE_B, traffic_color[SIDE_B]);
+	  switch(traffic_color[SIDE_A]){
 	  case RED_LIGHT:
-		  if(traffic_timer <= 0){
-			  traffic_color = GREEN_LIGHT;
-			  traffic_timer = GREEN_TIME;
+		  if(traffic_timer[SIDE_A] <= 0 && traffic_timer[SIDE_B] <= 0){
+			  // SIDE_A: turn to green, SIDE_B: turn to red
+			  change_traffic_light(SIDE_A, GREEN_LIGHT);
+			  change_traffic_light(SIDE_B, RED_LIGHT);
+			  break;
+		  }
+		  if(traffic_timer[SIDE_B] <= 0){
+			  // SIDE_A: remain red, SIDE_B: turn yellow
+			  change_traffic_light(SIDE_B, YELLOW_LIGHT);
+			  break;
 		  }
 		  break;
 	  case GREEN_LIGHT:
-		  if(traffic_timer <= 0){
-			  traffic_color = YELLOW_LIGHT;
-			  traffic_timer = YELLOW_TIME;
+		  if(traffic_timer[SIDE_A] <= 0){
+			  // SIDE_A: turn yellow, SIDE_B: remain red
+			  change_traffic_light(SIDE_A, YELLOW_LIGHT);
+			  break;
 		  }
 		  break;
 	  case YELLOW_LIGHT:
-		  if(traffic_timer <= 0){
-			  traffic_color = RED_LIGHT;
-			  traffic_timer = RED_TIME;
+		  if(traffic_timer[SIDE_A] <= 0 && traffic_timer[SIDE_B] <= 0){
+			  // SIDE_A: turn to red, SIDE_B: turn to green
+			  change_traffic_light(SIDE_A, RED_LIGHT);
+			  change_traffic_light(SIDE_B, GREEN_LIGHT);
+			  break;
 		  }
 		  break;
 	  default:
 		  turn_all_light_off();
 		  break;
 	  }
-	  traffic_timer--;
+	  traffic_timer[SIDE_A]--;
+	  traffic_timer[SIDE_B]--;
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
@@ -177,10 +187,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin|LED_YELLOW_Pin|LED_GREEN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, RED_A_Pin|YELLOW_A_Pin|GREEN_A_Pin|RED_B_Pin
+                          |YELLOW_B_Pin|GREEN_B_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : LED_RED_Pin LED_YELLOW_Pin LED_GREEN_Pin */
-  GPIO_InitStruct.Pin = LED_RED_Pin|LED_YELLOW_Pin|LED_GREEN_Pin;
+  /*Configure GPIO pins : RED_A_Pin YELLOW_A_Pin GREEN_A_Pin RED_B_Pin
+                           YELLOW_B_Pin GREEN_B_Pin */
+  GPIO_InitStruct.Pin = RED_A_Pin|YELLOW_A_Pin|GREEN_A_Pin|RED_B_Pin
+                          |YELLOW_B_Pin|GREEN_B_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
