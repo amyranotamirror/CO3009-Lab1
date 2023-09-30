@@ -1,5 +1,5 @@
 
-Traffic_Light.elf:     file format elf32-littlearm
+Traffic_Light_IC7447.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
