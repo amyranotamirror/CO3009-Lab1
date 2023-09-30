@@ -21,7 +21,8 @@ Core/Src/stm32f1xx_hal_msp.o: ../Core/Src/stm32f1xx_hal_msp.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
- ../Core/Inc/traffic_light.h ../Core/Inc/global.h ../Core/Inc/main.h
+ ../Core/Inc/traffic_light.h ../Core/Inc/global.h ../Core/Inc/main.h \
+ ../Core/Inc/led_seg.h
 
 ../Core/Inc/main.h:
 
@@ -74,3 +75,5 @@ Core/Src/stm32f1xx_hal_msp.o: ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Inc/global.h:
 
 ../Core/Inc/main.h:
+
+../Core/Inc/led_seg.h:

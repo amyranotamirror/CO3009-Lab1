@@ -85,9 +85,10 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  init_traffic_light();
   /* USER CODE BEGIN 2 */
-
+  init_traffic_light();
+  init_7_seg();
+  int counter = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -131,6 +132,11 @@ int main(void)
 	  }
 	  traffic_timer[SIDE_A]--;
 	  traffic_timer[SIDE_B]--;
+	  display7SEG(counter);
+	  if(counter >= 9){
+		  counter = 0;
+	  }
+	  counter++;
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
@@ -188,12 +194,15 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, RED_A_Pin|YELLOW_A_Pin|GREEN_A_Pin|RED_B_Pin
-                          |YELLOW_B_Pin|GREEN_B_Pin, GPIO_PIN_RESET);
+                          |YELLOW_B_Pin|GREEN_B_Pin|BCDA_0_Pin|BCDA_1_Pin
+                          |BCDA_2_Pin|BCDA_3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : RED_A_Pin YELLOW_A_Pin GREEN_A_Pin RED_B_Pin
-                           YELLOW_B_Pin GREEN_B_Pin */
+                           YELLOW_B_Pin GREEN_B_Pin BCDA_0_Pin BCDA_1_Pin
+                           BCDA_2_Pin BCDA_3_Pin */
   GPIO_InitStruct.Pin = RED_A_Pin|YELLOW_A_Pin|GREEN_A_Pin|RED_B_Pin
-                          |YELLOW_B_Pin|GREEN_B_Pin;
+                          |YELLOW_B_Pin|GREEN_B_Pin|BCDA_0_Pin|BCDA_1_Pin
+                          |BCDA_2_Pin|BCDA_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

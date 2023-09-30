@@ -30,7 +30,8 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
 #include "traffic_light.h"
-
+#include "led_seg.h"
+#include "global.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -71,6 +72,14 @@ void Error_Handler(void);
 #define YELLOW_B_GPIO_Port GPIOA
 #define GREEN_B_Pin GPIO_PIN_6
 #define GREEN_B_GPIO_Port GPIOA
+#define BCDA_0_Pin GPIO_PIN_7
+#define BCDA_0_GPIO_Port GPIOA
+#define BCDA_1_Pin GPIO_PIN_8
+#define BCDA_1_GPIO_Port GPIOA
+#define BCDA_2_Pin GPIO_PIN_9
+#define BCDA_2_GPIO_Port GPIOA
+#define BCDA_3_Pin GPIO_PIN_10
+#define BCDA_3_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

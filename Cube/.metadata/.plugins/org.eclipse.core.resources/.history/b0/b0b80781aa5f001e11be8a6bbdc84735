@@ -1,0 +1,28 @@
+/*
+ * led_seg.c
+ *
+ *  Created on: 30 thg 9, 2023
+ *      Author: Amyra Nguyen
+ */
+
+#include "led_seg.h"
+
+void init_7_seg(){
+	led_seg[0] = (GPIO_config){BCDA_0_GPIO_Port, BCDA_0_Pin};
+	led_seg[1] = (GPIO_config){BCDA_1_GPIO_Port, BCDA_1_Pin};
+	led_seg[2] = (GPIO_config){BCDA_2_GPIO_Port, BCDA_2_Pin};
+	led_seg[3] = (GPIO_config){BCDA_3_GPIO_Port, BCDA_3_Pin};
+}
+void display7SEG(int num){
+	if(BCD >= MIN_BCD && BCD <= MAX_BCD){
+		for(int pos = 0; pos < NUM_BIT; pos++){
+			if(BCD % 2 == 0){
+				turn_seg_off(pos);
+			}
+			if(BCD % 2 == 1){
+				turn_seg_on(side, pos);
+			}
+			BCD = BCD / 2;
+		}
+	}
+}
