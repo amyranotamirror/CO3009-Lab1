@@ -94,7 +94,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  setNumberOnClock(test_counter);
+	  test_clock(test_counter);
 	  test_counter = (test_counter + 1) % NUM_LEDS;
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */

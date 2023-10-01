@@ -36,10 +36,10 @@ void clearAllClock(){
 	for(int position = 0; position < NUM_LEDS; position++)
 			turn_analog_led_off(position);
 }
-void setNumberOnClock(int num){
-	turn_analog_led_on(num);
-	if(num == 0)
+void test_clock(int position){
+	turn_analog_led_on(position);
+	if(position == 0)
 		turn_analog_led_off(NUM_LEDS - 1);
-	if(num != 0)
-		turn_analog_led_off(num - 1);
+	if(position != 0)
+		turn_analog_led_off(position - 1);
 }
