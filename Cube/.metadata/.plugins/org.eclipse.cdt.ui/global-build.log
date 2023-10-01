@@ -1,25 +1,20 @@
-00:17:23 **** Incremental Build of configuration Debug for project Traffic_Light_wo_IC7447 ****
+01:27:21 **** Incremental Build of configuration Debug for project Traffic_Light ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/global.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/global.d" -MT"Core/Src/global.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/global.o"
 arm-none-eabi-gcc "../Core/Src/led_seg.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/led_seg.d" -MT"Core/Src/led_seg.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/led_seg.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
-arm-none-eabi-gcc "../Core/Src/traffic_light.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/traffic_light.d" -MT"Core/Src/traffic_light.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/traffic_light.o"
-arm-none-eabi-gcc -o "Traffic_Light_wo_IC7447.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\HCMUT\KNOWLEDGE\Github\HCMUT\Team\CO3007-2111203-lab1\CO3007-2111203-lab1\Cube\Traffic_Light_wo_IC7447\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Traffic_Light_wo_IC7447.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Traffic_Light_wo_IC7447.elf
+arm-none-eabi-gcc -o "Traffic_Light.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\HCMUT\KNOWLEDGE\Github\HCMUT\Team\CO3007-2111203-lab1\CO3007-2111203-lab1\Cube\Traffic_Light_wo_IC7447\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Traffic_Light.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Traffic_Light.elf
  
-arm-none-eabi-size   Traffic_Light_wo_IC7447.elf 
-arm-none-eabi-objdump -h -S  Traffic_Light_wo_IC7447.elf  > "Traffic_Light_wo_IC7447.list"
-arm-none-eabi-objcopy  -O ihex  Traffic_Light_wo_IC7447.elf  "Traffic_Light_wo_IC7447.hex"
+arm-none-eabi-size   Traffic_Light.elf 
+arm-none-eabi-objdump -h -S  Traffic_Light.elf  > "Traffic_Light.list"
+arm-none-eabi-objcopy  -O ihex  Traffic_Light.elf  "Traffic_Light.hex"
    text	   data	    bss	    dec	    hex	filename
-   5684	     20	   1636	   7340	   1cac	Traffic_Light_wo_IC7447.elf
-arm-none-eabi-objcopy  -O binary  Traffic_Light_wo_IC7447.elf  "Traffic_Light_wo_IC7447.bin"
+   5780	     20	   1636	   7436	   1d0c	Traffic_Light.elf
+arm-none-eabi-objcopy  -O binary  Traffic_Light.elf  "Traffic_Light.bin"
 Finished building: default.size.stdout
  
-Finished building: Traffic_Light_wo_IC7447.list
-Finished building: Traffic_Light_wo_IC7447.hex
-Finished building: Traffic_Light_wo_IC7447.bin
+Finished building: Traffic_Light.hex
+Finished building: Traffic_Light.list
+Finished building: Traffic_Light.bin
  
  
  

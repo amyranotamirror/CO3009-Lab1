@@ -1,4 +1,4 @@
-00:17:23 **** Incremental Build of configuration Debug for project Traffic_Light_wo_IC7447 ****
+01:04:02 **** Incremental Build of configuration Debug for project Traffic_Light_wo_IC7447 ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/global.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/global.d" -MT"Core/Src/global.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/global.o"
 arm-none-eabi-gcc "../Core/Src/led_seg.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/led_seg.d" -MT"Core/Src/led_seg.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/led_seg.o"
@@ -12,9 +12,9 @@ Finished building target: Traffic_Light_wo_IC7447.elf
 arm-none-eabi-size   Traffic_Light_wo_IC7447.elf 
 arm-none-eabi-objdump -h -S  Traffic_Light_wo_IC7447.elf  > "Traffic_Light_wo_IC7447.list"
 arm-none-eabi-objcopy  -O ihex  Traffic_Light_wo_IC7447.elf  "Traffic_Light_wo_IC7447.hex"
-   text	   data	    bss	    dec	    hex	filename
-   5684	     20	   1636	   7340	   1cac	Traffic_Light_wo_IC7447.elf
 arm-none-eabi-objcopy  -O binary  Traffic_Light_wo_IC7447.elf  "Traffic_Light_wo_IC7447.bin"
+   text	   data	    bss	    dec	    hex	filename
+   5664	     20	   1636	   7320	   1c98	Traffic_Light_wo_IC7447.elf
 Finished building: default.size.stdout
  
 Finished building: Traffic_Light_wo_IC7447.list
@@ -24,5 +24,5 @@ Finished building: Traffic_Light_wo_IC7447.bin
  
  
 
-00:17:25 Build Finished. 0 errors, 0 warnings. (took 1s.698ms)
+01:04:03 Build Finished. 0 errors, 0 warnings. (took 1s.420ms)
 

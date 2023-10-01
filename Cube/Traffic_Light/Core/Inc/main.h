@@ -31,7 +31,7 @@ extern "C" {
 #include "stm32f1xx_hal.h"
 #include "traffic_light.h"
 #include "led_seg.h"
-#include "global.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -72,14 +72,24 @@ void Error_Handler(void);
 #define YELLOW_B_GPIO_Port GPIOA
 #define GREEN_B_Pin GPIO_PIN_6
 #define GREEN_B_GPIO_Port GPIOA
-#define BCDA_0_Pin GPIO_PIN_7
-#define BCDA_0_GPIO_Port GPIOA
-#define BCDA_1_Pin GPIO_PIN_8
-#define BCDA_1_GPIO_Port GPIOA
-#define BCDA_2_Pin GPIO_PIN_9
-#define BCDA_2_GPIO_Port GPIOA
-#define BCDA_3_Pin GPIO_PIN_10
-#define BCDA_3_GPIO_Port GPIOA
+#define EN_A_Pin GPIO_PIN_7
+#define EN_A_GPIO_Port GPIOA
+#define SEG_a_Pin GPIO_PIN_0
+#define SEG_a_GPIO_Port GPIOB
+#define SEG_b_Pin GPIO_PIN_1
+#define SEG_b_GPIO_Port GPIOB
+#define SEG_c_Pin GPIO_PIN_2
+#define SEG_c_GPIO_Port GPIOB
+#define EN_B_Pin GPIO_PIN_8
+#define EN_B_GPIO_Port GPIOA
+#define SEG_d_Pin GPIO_PIN_3
+#define SEG_d_GPIO_Port GPIOB
+#define SEG_e_Pin GPIO_PIN_4
+#define SEG_e_GPIO_Port GPIOB
+#define SEG_f_Pin GPIO_PIN_5
+#define SEG_f_GPIO_Port GPIOB
+#define SEG_g_Pin GPIO_PIN_6
+#define SEG_g_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

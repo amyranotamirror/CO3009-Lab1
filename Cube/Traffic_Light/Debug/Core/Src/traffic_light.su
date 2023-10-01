@@ -3,4 +3,4 @@ traffic_light.c:25:6:turn_light_off	16	static
 traffic_light.c:28:6:turn_light_on	16	static
 traffic_light.c:31:6:turn_all_light_off	16	static
 traffic_light.c:38:6:run_traffic_light	24	static
-traffic_light.c:47:6:change_traffic_light	16	static
+traffic_light.c:46:6:change_traffic_light	16	static

@@ -1,0 +1,56 @@
+/*
+ * led_seg.c
+ *
+ *  Created on: Oct 1, 2023
+ *      Author: Amyra Nguyen
+ */
+
+
+#include "led_seg.h"
+void display7SEG(int side, int num){
+	set_GPIO_off(destination)
+	switch(num){
+	case 0:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_g_Pin, GPIO_PIN_SET);
+		break;
+	case 1:
+		HAL_GPIO_WritePin(GPIOB, SEG_b_Pin|SEG_c_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_SET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_d_Pin|SEG_e_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_c_Pin|SEG_f_Pin, GPIO_PIN_SET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_e_Pin|SEG_f_Pin, GPIO_PIN_SET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, SEG_b_Pin|SEG_c_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_d_Pin|SEG_e_Pin, GPIO_PIN_SET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_c_Pin|SEG_d_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB,SEG_b_Pin|SEG_e_Pin, GPIO_PIN_SET);
+		break;
+	case 6:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_c_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB,SEG_b_Pin, GPIO_PIN_SET);
+		break;
+	case 7:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_SET);
+		break;
+	case 8:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		break;
+	case 9:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_e_Pin, GPIO_PIN_SET);
+		break;
+	default:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_SET);
+		break;
+	}
+}

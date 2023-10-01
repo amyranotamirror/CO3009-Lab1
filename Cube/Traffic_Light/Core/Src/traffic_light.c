@@ -17,10 +17,10 @@ void init_traffic_light(){
 	turn_all_light_off();
 
 	traffic_color[SIDE_A] = RED_LIGHT;
-	traffic_timer[SIDE_A] = RED_TIME - 1;
+	traffic_timer[SIDE_A] = RED_TIME;
 
 	traffic_color[SIDE_B] = GREEN_LIGHT;
-	traffic_timer[SIDE_B] = GREEN_TIME - 1;
+	traffic_timer[SIDE_B] = GREEN_TIME;
 }
 void turn_light_off(int side, int color){
 	set_GPIO_on(&light_color[side][color]);
@@ -37,19 +37,18 @@ void turn_all_light_off(){
 }
 void run_traffic_light(int side, int color){
 	for(int i = 0; i < NUM_COLOR; i++){
-		if(i == color){
+		if(i == color)
 			turn_light_on(side, i);
-			continue;
-		}
-		turn_light_off(side, i);
+		if(i != color)
+			turn_light_off(side, i);
 	}
 }
 void change_traffic_light(int side, int color){
 	traffic_color[side] = color;
 	if(color == GREEN_LIGHT)
-		traffic_timer[side] = GREEN_TIME - 1;
+		traffic_timer[side] = GREEN_TIME;
 	if(color == YELLOW_LIGHT)
-		traffic_timer[side] = YELLOW_LIGHT - 1;
+		traffic_timer[side] = YELLOW_TIME;
 	if(color == RED_LIGHT)
-		traffic_timer[side] = RED_LIGHT - 1;
+		traffic_timer[side] = RED_TIME;
 }

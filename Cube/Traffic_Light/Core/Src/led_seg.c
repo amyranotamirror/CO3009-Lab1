@@ -1,41 +1,57 @@
 /*
  * led_seg.c
  *
- *  Created on: 30 thg 9, 2023
+ *  Created on: Oct 1, 2023
  *      Author: Amyra Nguyen
  */
 
+
 #include "led_seg.h"
-
-void init_7_seg(){
-	led_seg[0] = (GPIO_config){BCDA_0_GPIO_Port, BCDA_0_Pin};
-	led_seg[1] = (GPIO_config){BCDA_1_GPIO_Port, BCDA_1_Pin};
-	led_seg[2] = (GPIO_config){BCDA_2_GPIO_Port, BCDA_2_Pin};
-	led_seg[3] = (GPIO_config){BCDA_3_GPIO_Port, BCDA_3_Pin};
-
-	turn_all_seg_off();
-}
-void turn_seg_on(int BCD_position){
-	set_GPIO_on(&led_seg[BCD_position]);
-}
-void turn_seg_off(int BCD_position){
-	set_GPIO_off(&led_seg[BCD_position]);
-}
-void turn_all_seg_off(){
-	for(int pos = 0; pos < NUM_BITS; pos++){
-		turn_seg_off(pos);
-	}
-}
-void display7SEG(int num){
-	if(num >= MIN_BCD && num <= MAX_BCD){
-		for(int pos = 0; pos < NUM_BITS; pos++){
-			if(num % 2 == 0){
-				turn_seg_off(pos);
-			}
-			if(num % 2 == 1){
-				turn_seg_on(pos);
-			}
-			num = num / 2;
-		}
+void display7SEG(int side, int num){
+	HAL_GPIO_WritePin(EN_A_GPIO_Port, EN_A_Pin, (GPIO_PinState)(side != SIDE_A));
+	HAL_GPIO_WritePin(EN_B_GPIO_Port, EN_B_Pin, (GPIO_PinState)(side != SIDE_B));
+	switch(num){
+	case 0:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_g_Pin, GPIO_PIN_SET);
+		break;
+	case 1:
+		HAL_GPIO_WritePin(GPIOB, SEG_b_Pin|SEG_c_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_SET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_d_Pin|SEG_e_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_c_Pin|SEG_f_Pin, GPIO_PIN_SET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_e_Pin|SEG_f_Pin, GPIO_PIN_SET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, SEG_b_Pin|SEG_c_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_d_Pin|SEG_e_Pin, GPIO_PIN_SET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_c_Pin|SEG_d_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB,SEG_b_Pin|SEG_e_Pin, GPIO_PIN_SET);
+		break;
+	case 6:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_c_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB,SEG_b_Pin, GPIO_PIN_SET);
+		break;
+	case 7:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_SET);
+		break;
+	case 8:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		break;
+	case 9:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_e_Pin, GPIO_PIN_SET);
+		break;
+	default:
+		HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin|SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_SET);
+		break;
 	}
 }

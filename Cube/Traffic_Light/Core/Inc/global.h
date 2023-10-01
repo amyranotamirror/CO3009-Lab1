@@ -13,9 +13,6 @@
 /* Macros & Global variables -------------------------------------------------*/
 #define NUM_COLOR 3
 #define NUM_SIDE 2
-#define NUM_BITS 4
-#define MIN_BCD 0
-#define MAX_BCD 9
 
 /* GPIO setup ----------------------------------------------------------------*/
 typedef struct{
@@ -23,7 +20,6 @@ typedef struct{
 	uint16_t pin;
 } GPIO_config;
 GPIO_config light_color[NUM_SIDE][NUM_COLOR];
-GPIO_config led_seg[NUM_BITS];
 int traffic_color[NUM_SIDE];
 int traffic_timer[NUM_SIDE];
 void set_GPIO_off(GPIO_config *destination);

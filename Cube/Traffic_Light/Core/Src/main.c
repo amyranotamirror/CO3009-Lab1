@@ -87,60 +87,60 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   init_traffic_light();
-  init_7_seg();
-  int counter = 0;
+  int period = 10;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {
-	  run_traffic_light(SIDE_A, traffic_color[SIDE_A]);
-	  run_traffic_light(SIDE_B, traffic_color[SIDE_B]);
-	  switch(traffic_color[SIDE_A]){
-	  case RED_LIGHT:
-		  if(traffic_timer[SIDE_A] <= 0 && traffic_timer[SIDE_B] <= 0){
-			  // SIDE_A: turn to green, SIDE_B: turn to red
-			  change_traffic_light(SIDE_A, GREEN_LIGHT);
-			  change_traffic_light(SIDE_B, RED_LIGHT);
-			  break;
-		  }
-		  if(traffic_timer[SIDE_B] <= 0){
-			  // SIDE_A: remain red, SIDE_B: turn yellow
-			  change_traffic_light(SIDE_B, YELLOW_LIGHT);
-			  break;
-		  }
-		  break;
-	  case GREEN_LIGHT:
-		  if(traffic_timer[SIDE_A] <= 0){
-			  // SIDE_A: turn yellow, SIDE_B: remain red
-			  change_traffic_light(SIDE_A, YELLOW_LIGHT);
-			  break;
-		  }
-		  break;
-	  case YELLOW_LIGHT:
-		  if(traffic_timer[SIDE_A] <= 0 && traffic_timer[SIDE_B] <= 0){
-			  // SIDE_A: turn to red, SIDE_B: turn to green
-			  change_traffic_light(SIDE_A, RED_LIGHT);
-			  change_traffic_light(SIDE_B, GREEN_LIGHT);
-			  break;
-		  }
-		  break;
-	  default:
-		  turn_all_light_off();
-		  break;
-	  }
-	  traffic_timer[SIDE_A]--;
-	  traffic_timer[SIDE_B]--;
-	  if(counter >= 10){
-		  counter = 0;
-	  }
-	  display7SEG(counter++);
-	  HAL_Delay(1000);
-    /* USER CODE END WHILE */
+    {
+  	  run_traffic_light(SIDE_A, traffic_color[SIDE_A]);
+  	  run_traffic_light(SIDE_B, traffic_color[SIDE_B]);
+  	  period--;
+  	  if(period <= 0){
+  		  traffic_timer[SIDE_A]--;
+  		  traffic_timer[SIDE_B]--;
+  		  period = 10;
+  	  }
+  	  if(period % 2 == 0)
+  		  display7SEG(SIDE_A, traffic_timer[SIDE_A]);
+  	  if(period % 2 == 1)
+  		  display7SEG(SIDE_B, traffic_timer[SIDE_B]);
 
-    /* USER CODE BEGIN 3 */
-  }
+  	  switch(traffic_color[SIDE_A]){
+  	  case RED_LIGHT:
+  		  if(traffic_timer[SIDE_A] <= 0 && traffic_timer[SIDE_B] <= 0){
+  			  // SIDE_A: turn to green, SIDE_B: turn to red
+  			  change_traffic_light(SIDE_A, GREEN_LIGHT);
+  			  change_traffic_light(SIDE_B, RED_LIGHT);
+  		  }
+  		  if(traffic_timer[SIDE_B] <= 0){
+  			  // SIDE_A: remain red, SIDE_B: turn yellow
+  			  change_traffic_light(SIDE_B, YELLOW_LIGHT);
+  		  }
+  		  break;
+  	  case GREEN_LIGHT:
+  		  if(traffic_timer[SIDE_A] <= 0){
+  			  // SIDE_A: turn yellow, SIDE_B: remain red
+  			  change_traffic_light(SIDE_A, YELLOW_LIGHT);
+  		  }
+  		  break;
+  	  case YELLOW_LIGHT:
+  		  if(traffic_timer[SIDE_A] <= 0 && traffic_timer[SIDE_B] <= 0){
+  			  // SIDE_A: turn to red, SIDE_B: turn to green
+  			  change_traffic_light(SIDE_A, RED_LIGHT);
+  			  change_traffic_light(SIDE_B, GREEN_LIGHT);
+  		  }
+  		  break;
+  	  default:
+  		  turn_all_light_off();
+  		  break;
+  	  }
+  	  HAL_Delay(100);
+      /* USER CODE END WHILE */
+
+      /* USER CODE BEGIN 3 */
+    }
   /* USER CODE END 3 */
 }
 
@@ -190,22 +190,33 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, RED_A_Pin|YELLOW_A_Pin|GREEN_A_Pin|RED_B_Pin
-                          |YELLOW_B_Pin|GREEN_B_Pin|BCDA_0_Pin|BCDA_1_Pin
-                          |BCDA_2_Pin|BCDA_3_Pin, GPIO_PIN_RESET);
+                          |YELLOW_B_Pin|GREEN_B_Pin|EN_A_Pin|EN_B_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin
+                          |SEG_e_Pin|SEG_f_Pin|SEG_g_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : RED_A_Pin YELLOW_A_Pin GREEN_A_Pin RED_B_Pin
-                           YELLOW_B_Pin GREEN_B_Pin BCDA_0_Pin BCDA_1_Pin
-                           BCDA_2_Pin BCDA_3_Pin */
+                           YELLOW_B_Pin GREEN_B_Pin EN_A_Pin EN_B_Pin */
   GPIO_InitStruct.Pin = RED_A_Pin|YELLOW_A_Pin|GREEN_A_Pin|RED_B_Pin
-                          |YELLOW_B_Pin|GREEN_B_Pin|BCDA_0_Pin|BCDA_1_Pin
-                          |BCDA_2_Pin|BCDA_3_Pin;
+                          |YELLOW_B_Pin|GREEN_B_Pin|EN_A_Pin|EN_B_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : SEG_a_Pin SEG_b_Pin SEG_c_Pin SEG_d_Pin
+                           SEG_e_Pin SEG_f_Pin SEG_g_Pin */
+  GPIO_InitStruct.Pin = SEG_a_Pin|SEG_b_Pin|SEG_c_Pin|SEG_d_Pin
+                          |SEG_e_Pin|SEG_f_Pin|SEG_g_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
