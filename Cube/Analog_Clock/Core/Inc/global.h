@@ -1,0 +1,23 @@
+/*
+ * global.h
+ *
+ *  Created on: Oct 2, 2023
+ *      Author: Amyra Nguyen
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#include "main.h"
+typedef struct{
+	GPIO_TypeDef* port;
+	uint16_t pin;
+} GPIO_config;
+
+#define NUM_LEDS 12
+
+GPIO_config analog_led[NUM_LEDS];
+
+void set_GPIO_on(GPIO_config* destination);
+void set_GPIO_off(GPIO_config* destination);
+#endif /* INC_GLOBAL_H_ */

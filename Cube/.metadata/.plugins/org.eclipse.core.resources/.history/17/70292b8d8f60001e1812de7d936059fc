@@ -1,0 +1,26 @@
+/*
+ * global.h
+ *
+ *  Created on: Oct 2, 2023
+ *      Author: Amyra Nguyen
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#include "main.h"
+typedef struct{
+	GPIO_TypeDef* port;
+	GPIO_PinState pin;
+} GPIO_config;
+
+#define NUM_HOURS 12
+#define NUM_MINS 60
+#define NUM_SECS 60
+
+GPIO_config led_hour[NUM_HOURS];
+GPIO_config led_minute[NUM_MINS];
+GPIO_config led_second[NUM_SECS];
+
+void set_GPIO_on(GPIO_config* destination);
+#endif /* INC_GLOBAL_H_ */

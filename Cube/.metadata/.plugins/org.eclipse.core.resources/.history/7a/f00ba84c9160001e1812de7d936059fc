@@ -1,0 +1,16 @@
+/*
+ * analog_clock.h
+ *
+ *  Created on: Oct 2, 2023
+ *      Author: Amyra Nguyen
+ */
+
+#ifndef INC_ANALOG_CLOCK_H_
+#define INC_ANALOG_CLOCK_H_
+
+#include "global.h"
+void init_analog_clock();
+void turn_analog_led_on(int position);
+void turn_analog_led_off(int position);
+
+#endif /* INC_ANALOG_CLOCK_H_ */

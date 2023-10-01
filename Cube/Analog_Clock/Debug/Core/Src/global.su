@@ -1,0 +1,2 @@
+global.c:9:6:set_GPIO_on	16	static
+global.c:12:6:set_GPIO_off	16	static

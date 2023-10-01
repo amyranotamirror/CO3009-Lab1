@@ -1,0 +1,11 @@
+/*
+ * analog_clock.c
+ *
+ *  Created on: Oct 2, 2023
+ *      Author: Amyra Nguyen
+ */
+
+
+#include "analog_clock.h"
+
+void init_analog_clock();

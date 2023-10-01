@@ -1,0 +1,14 @@
+/*
+ * analog_clock.h
+ *
+ *  Created on: Oct 2, 2023
+ *      Author: Amyra Nguyen
+ */
+
+#ifndef INC_ANALOG_CLOCK_H_
+#define INC_ANALOG_CLOCK_H_
+
+#include "global.h"
+init_analog_clock();
+
+#endif /* INC_ANALOG_CLOCK_H_ */
