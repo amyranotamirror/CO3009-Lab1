@@ -1,4 +1,5 @@
-analog_clock.c:11:6:init_analog_clock	112	static
-analog_clock.c:30:6:turn_analog_led_on	16	static
-analog_clock.c:33:6:turn_analog_led_off	16	static
-analog_clock.c:36:6:test_clock	16	static
+analog_clock.c:11:6:init_analog_clock	104	static
+analog_clock.c:29:6:turn_analog_led_on	16	static
+analog_clock.c:32:6:turn_analog_led_off	16	static
+analog_clock.c:35:6:clearAllClock	16	static
+analog_clock.c:39:6:test_clock	16	static
