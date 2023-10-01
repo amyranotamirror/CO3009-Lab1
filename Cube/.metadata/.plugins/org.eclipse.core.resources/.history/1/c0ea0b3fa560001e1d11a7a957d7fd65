@@ -11,6 +11,8 @@
 #include "global.h"
 
 void init_analog_clock();
+void turn_analog_led_on(int position);
+void turn_analog_led_off(int position);
 void clearAllClock();
 void setNumberOnClock(int num);
 void clearNumberOnClock(int num);
