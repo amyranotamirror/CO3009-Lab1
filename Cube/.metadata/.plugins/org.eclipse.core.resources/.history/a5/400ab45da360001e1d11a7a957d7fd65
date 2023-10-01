@@ -26,8 +26,8 @@ void init_analog_clock(){
 	analog_led[11] = (GPIO_config){H_12_GPIO_Port, H_12_Pin};
 	void clearAllClock();
 }
-void setNumberOnClock(int num){
-	set_GPIO_off(&analog_led[num]);
+void turn_analog_led_on(int position){
+	set_GPIO_off(&analog_led[position]);
 }
 void turn_analog_led_off(int position){
 	set_GPIO_on(&analog_led[position]);

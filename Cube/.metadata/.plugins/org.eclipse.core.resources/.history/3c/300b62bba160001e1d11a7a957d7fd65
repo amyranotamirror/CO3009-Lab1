@@ -24,22 +24,18 @@ void init_analog_clock(){
 	analog_led[9] = (GPIO_config){H_10_GPIO_Port, H_10_Pin};
 	analog_led[10] = (GPIO_config){H_11_GPIO_Port, H_11_Pin};
 	analog_led[11] = (GPIO_config){H_12_GPIO_Port, H_12_Pin};
-	void clearAllClock();
+	clearAllClock();
 }
-void setNumberOnClock(int num){
-	set_GPIO_off(&analog_led[num]);
+void turn_analog_led_on(int position){
+	set_GPIO_off(&analog_led[position]);
 }
 void turn_analog_led_off(int position){
 	set_GPIO_on(&analog_led[position]);
 }
 void clearAllClock(){
 	for(int position = 0; position < NUM_LEDS; position++)
-		turn_analog_led_off(position);
+			turn_analog_led_off(position);
 }
-void test_clock(int position){
-	turn_analog_led_on(position);
-	if(position == 0)
-		turn_analog_led_off(NUM_LEDS - 1);
-	if(position != 0)
-		turn_analog_led_off(position - 1);
+void setNumberOnClock(int num){
+	turn_analog_led_on(num);
 }

@@ -1,27 +1,17 @@
-04:25:27 **** Incremental Build of configuration Debug for project Analog_Clock ****
+04:43:55 **** Incremental Build of configuration Debug for project Analog_Clock ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/analog_clock.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/analog_clock.d" -MT"Core/Src/analog_clock.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/analog_clock.o"
-arm-none-eabi-gcc "../Core/Src/global.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/global.d" -MT"Core/Src/global.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/global.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:97:4: warning: implicit declaration of function 'test_clock' [-Wimplicit-function-declaration]
+   97 |    test_clock(test_counter);
+      |    ^~~~~~~~~~
 arm-none-eabi-gcc -o "Analog_Clock.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\HCMUT\KNOWLEDGE\Github\HCMUT\Team\CO3007-2111203-lab1\CO3007-2111203-lab1\Cube\Analog_Clock\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Analog_Clock.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Analog_Clock.elf
- 
-arm-none-eabi-size   Analog_Clock.elf 
-arm-none-eabi-objdump -h -S  Analog_Clock.elf  > "Analog_Clock.list"
-arm-none-eabi-objcopy  -O ihex  Analog_Clock.elf  "Analog_Clock.hex"
-   text	   data	    bss	    dec	    hex	filename
-   5124	     20	   1668	   6812	   1a9c	Analog_Clock.elf
-arm-none-eabi-objcopy  -O binary  Analog_Clock.elf  "Analog_Clock.bin"
-Finished building: default.size.stdout
- 
-Finished building: Analog_Clock.list
-Finished building: Analog_Clock.hex
-Finished building: Analog_Clock.bin
- 
- 
- 
+d:\installation\apps\cubeide\stm32cubeide_1.7.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/analog_clock.o: in function `test_clock':
+D:/HCMUT/KNOWLEDGE/Github/HCMUT/Team/CO3007-2111203-lab1/CO3007-2111203-lab1/Cube/Analog_Clock/Debug/../Core/Src/analog_clock.c:40: undefined reference to `turn_analog_led_on'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:68: Analog_Clock.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-04:25:28 Build Finished. 0 errors, 0 warnings. (took 1s.21ms)
+04:43:55 Build Failed. 3 errors, 1 warnings. (took 852ms)
 
