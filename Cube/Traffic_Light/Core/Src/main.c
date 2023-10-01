@@ -132,11 +132,10 @@ int main(void)
 	  }
 	  traffic_timer[SIDE_A]--;
 	  traffic_timer[SIDE_B]--;
-	  display7SEG(counter);
-	  if(counter >= 9){
+	  if(counter >= 10){
 		  counter = 0;
 	  }
-	  counter++;
+	  display7SEG(counter++);
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
