@@ -14,5 +14,6 @@ void init_analog_clock();
 void clearAllClock();
 void setNumberOnClock(int num);
 void clearNumberOnClock(int num);
+void run_timer(uint32_t sum_seconds);
 
 #endif /* INC_ANALOG_CLOCK_H_ */

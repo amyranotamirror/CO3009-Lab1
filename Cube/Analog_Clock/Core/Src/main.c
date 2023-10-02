@@ -87,16 +87,16 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   init_analog_clock();
-  int test_counter = 0;
+  uint32_t test_counter = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  test_clock(test_counter);
-	  test_counter = (test_counter + 1) % NUM_LEDS;
-	  HAL_Delay(1000);
+	  run_timer(test_counter);
+	  test_counter = (test_counter + 1) % (24*60*60);
+	  HAL_Delay(20);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -152,16 +152,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, H_01_Pin|H_02_Pin|H_03_Pin|H_04_Pin
-                          |H_05_Pin|H_06_Pin|H_07_Pin|H_08_Pin
-                          |H_09_Pin|H_10_Pin|H_11_Pin|H_12_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, H_00_Pin|H_01_Pin|H_02_Pin|H_03_Pin
+                          |H_04_Pin|H_05_Pin|H_06_Pin|H_07_Pin
+                          |H_08_Pin|H_09_Pin|H_10_Pin|H_11_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : H_01_Pin H_02_Pin H_03_Pin H_04_Pin
-                           H_05_Pin H_06_Pin H_07_Pin H_08_Pin
-                           H_09_Pin H_10_Pin H_11_Pin H_12_Pin */
-  GPIO_InitStruct.Pin = H_01_Pin|H_02_Pin|H_03_Pin|H_04_Pin
-                          |H_05_Pin|H_06_Pin|H_07_Pin|H_08_Pin
-                          |H_09_Pin|H_10_Pin|H_11_Pin|H_12_Pin;
+  /*Configure GPIO pins : H_00_Pin H_01_Pin H_02_Pin H_03_Pin
+                           H_04_Pin H_05_Pin H_06_Pin H_07_Pin
+                           H_08_Pin H_09_Pin H_10_Pin H_11_Pin */
+  GPIO_InitStruct.Pin = H_00_Pin|H_01_Pin|H_02_Pin|H_03_Pin
+                          |H_04_Pin|H_05_Pin|H_06_Pin|H_07_Pin
+                          |H_08_Pin|H_09_Pin|H_10_Pin|H_11_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

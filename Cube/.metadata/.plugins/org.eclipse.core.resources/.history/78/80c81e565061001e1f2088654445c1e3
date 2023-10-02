@@ -1,0 +1,47 @@
+/*
+ * analog_clock.c
+ *
+ *  Created on: Oct 2, 2023
+ *      Author: Amyra Nguyen
+ */
+
+
+#include "analog_clock.h"
+
+void init_analog_clock(){
+	analog_led[0] = (GPIO_config){H_00_GPIO_Port, H_00_Pin};
+	analog_led[1] = (GPIO_config){H_01_GPIO_Port, H_01_Pin};
+	analog_led[2] = (GPIO_config){H_02_GPIO_Port, H_02_Pin};
+
+	analog_led[3] = (GPIO_config){H_03_GPIO_Port, H_03_Pin};
+	analog_led[4] = (GPIO_config){H_04_GPIO_Port, H_04_Pin};
+	analog_led[5] = (GPIO_config){H_05_GPIO_Port, H_05_Pin};
+
+	analog_led[6] = (GPIO_config){H_06_GPIO_Port, H_06_Pin};
+	analog_led[7] = (GPIO_config){H_07_GPIO_Port, H_07_Pin};
+	analog_led[8] = (GPIO_config){H_08_GPIO_Port, H_08_Pin};
+
+	analog_led[9] = (GPIO_config){H_09_GPIO_Port, H_09_Pin};
+	analog_led[10] = (GPIO_config){H_10_GPIO_Port, H_10_Pin};
+	analog_led[11] = (GPIO_config){H_11_GPIO_Port, H_11_Pin};
+	clearAllClock();
+}
+void setNumberOnClock(int num){
+	set_GPIO_off(&analog_led[num]);
+}
+void clearNumberOnClock(int num){
+	set_GPIO_on(&analog_led[num]);
+}
+void clearAllClock(){
+	for(int position = 0; position < NUM_LEDS; position++)
+		clearNumberOnClock(position);
+}
+void run_timer(uint32_t sum_seconds){
+	int hour = (sum_seconds / (60*60)) % 12,
+		minute = (sum_seconds / 60) % 60,
+		second = sum_seconds % 60;
+	clearAllClock();
+	setNumberOnClock(hour % 12);// Display hour
+	setNumberOnClock(minute / 5);//Display minute
+	setNumberOnClock(second / 5);//Display second
+}

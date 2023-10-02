@@ -2,4 +2,4 @@ analog_clock.c:11:6:init_analog_clock	104	static
 analog_clock.c:29:6:setNumberOnClock	16	static
 analog_clock.c:32:6:clearNumberOnClock	16	static
 analog_clock.c:35:6:clearAllClock	16	static
-analog_clock.c:39:6:test_clock	16	static
+analog_clock.c:39:6:run_timer	32	static

@@ -30,7 +30,6 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
 #include "analog_clock.h"
-#include "global.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -59,30 +58,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define H_01_Pin GPIO_PIN_4
+#define H_00_Pin GPIO_PIN_4
+#define H_00_GPIO_Port GPIOA
+#define H_01_Pin GPIO_PIN_5
 #define H_01_GPIO_Port GPIOA
-#define H_02_Pin GPIO_PIN_5
+#define H_02_Pin GPIO_PIN_6
 #define H_02_GPIO_Port GPIOA
-#define H_03_Pin GPIO_PIN_6
+#define H_03_Pin GPIO_PIN_7
 #define H_03_GPIO_Port GPIOA
-#define H_04_Pin GPIO_PIN_7
+#define H_04_Pin GPIO_PIN_8
 #define H_04_GPIO_Port GPIOA
-#define H_05_Pin GPIO_PIN_8
+#define H_05_Pin GPIO_PIN_9
 #define H_05_GPIO_Port GPIOA
-#define H_06_Pin GPIO_PIN_9
+#define H_06_Pin GPIO_PIN_10
 #define H_06_GPIO_Port GPIOA
-#define H_07_Pin GPIO_PIN_10
+#define H_07_Pin GPIO_PIN_11
 #define H_07_GPIO_Port GPIOA
-#define H_08_Pin GPIO_PIN_11
+#define H_08_Pin GPIO_PIN_12
 #define H_08_GPIO_Port GPIOA
-#define H_09_Pin GPIO_PIN_12
+#define H_09_Pin GPIO_PIN_13
 #define H_09_GPIO_Port GPIOA
-#define H_10_Pin GPIO_PIN_13
+#define H_10_Pin GPIO_PIN_14
 #define H_10_GPIO_Port GPIOA
-#define H_11_Pin GPIO_PIN_14
+#define H_11_Pin GPIO_PIN_15
 #define H_11_GPIO_Port GPIOA
-#define H_12_Pin GPIO_PIN_15
-#define H_12_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

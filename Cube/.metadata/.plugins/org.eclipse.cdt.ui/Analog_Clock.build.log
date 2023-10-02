@@ -1,15 +1,15 @@
-04:50:03 **** Incremental Build of configuration Debug for project Analog_Clock ****
+01:31:09 **** Incremental Build of configuration Debug for project Analog_Clock ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/analog_clock.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/analog_clock.d" -MT"Core/Src/analog_clock.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/analog_clock.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Analog_Clock.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\HCMUT\KNOWLEDGE\Github\HCMUT\Team\CO3007-2111203-lab1\CO3007-2111203-lab1\Cube\Analog_Clock\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Analog_Clock.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Analog_Clock.elf
  
 arm-none-eabi-size   Analog_Clock.elf 
 arm-none-eabi-objdump -h -S  Analog_Clock.elf  > "Analog_Clock.list"
 arm-none-eabi-objcopy  -O ihex  Analog_Clock.elf  "Analog_Clock.hex"
-   text	   data	    bss	    dec	    hex	filename
-   5084	     20	   1668	   6772	   1a74	Analog_Clock.elf
 arm-none-eabi-objcopy  -O binary  Analog_Clock.elf  "Analog_Clock.bin"
+   text	   data	    bss	    dec	    hex	filename
+   5240	     20	   1668	   6928	   1b10	Analog_Clock.elf
 Finished building: default.size.stdout
  
 Finished building: Analog_Clock.list
@@ -19,5 +19,5 @@ Finished building: Analog_Clock.bin
  
  
 
-04:50:04 Build Finished. 0 errors, 0 warnings. (took 900ms)
+01:31:10 Build Finished. 0 errors, 0 warnings. (took 980ms)
 
